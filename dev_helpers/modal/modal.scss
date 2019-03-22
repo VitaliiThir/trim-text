@@ -1,0 +1,152 @@
+@mixin pseudo($display: block, $pos: absolute, $content: '', $size: true){
+  content: $content;
+  display: $display;
+  position: $pos;
+  @if $size {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+@mixin responsive-ratio($x,$y, $pseudo: false) {
+  $padding: unquote( ( $y / $x ) * 100 + '%' );
+  @if $pseudo {
+   &:before {
+    @include pseudo($pos: relative);
+    width: 100%;
+    padding-top: $padding;
+  }
+  } @else {
+   padding-top: $padding;
+ }
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  z-index: 11;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  background-color: rgba(#000, .9);
+}
+
+.modal-item-wrap {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.modal-item {
+  transform: scale(0);
+  &.active {
+    animation: modalAnimate .3s forwards;
+  }
+  @keyframes modalAnimate {
+    100% {
+      transform: scale(1)
+    }
+  }
+}
+
+.modal-cont-wrap {
+  overflow-y: auto;
+}
+
+.modal-close {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  top: 0;
+  width: 2rem;
+  height: 2rem;
+  border: .05rem solid rgba(#fff, .4);
+  cursor: pointer;
+  background-color: #000;
+  transition: border-color .3s;
+  &:hover {
+    border-color: rgba(red, .4);
+    span {
+      width: 70%;
+    }
+  }
+  span {
+    position: absolute;
+    display: block;
+    top: 50%;
+    left: 50%;
+    height: 1px;
+    width: 50%;
+    background-color: #fff;
+    transition: inherit;
+    transition-property: width;
+    &:first-child {
+      transform: translateX(-50%) rotate(45deg);
+    }
+    &:last-child {
+      transform: translateX(-50%) rotate(-45deg);
+    }
+  }
+}
+
+.modal-preloader {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  background-color: #000;
+  img {
+    display: none;
+    position: absolute;
+    z-index: 15;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+  }
+}
+.modal-cont {
+  height: 100%;
+}
+.modal-item-wrap.modal-video {
+  width: 100%;
+  max-width: 750px;
+  .modal-item,
+  .modal-cont-wrap,
+  .modal-cont {
+    height: 100%;
+  }
+  .modal-cont-wrap {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(#fff, .4);
+    @include responsive-ratio(1, 0.55, true);
+  }
+  .modal-cont {
+    &, iframe, video {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    video {
+      max-width: 100%;
+    }
+  }
+}

@@ -1,0 +1,1 @@
+$(function(){var t=$(".t-text p"),o=$(".m-modal-text"),l=$(".m-modal-btn");t.smallText({max:60,showHide:!0}),l.on("click",function(){o.popUp()}),o.smallText({max:80,showTextOnClick:!0,showTextOnClickClass:".m-modal-btn",showTextParent:".modal-cont"})});

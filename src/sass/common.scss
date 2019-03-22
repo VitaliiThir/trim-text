@@ -32,6 +32,7 @@
 
 /* Developers helpers */
 @import '../../dev_helpers/pre_loader/pre_loader';
+@import '../../dev_helpers/modal/modal';
 /*END Developers helpers */
 
 /* Global styles start*/
@@ -739,51 +740,6 @@ svg {
 /* Это можно удалить перед началом работы */
 body {
   background-color: #006d84;
-}
-
-.temporary-content {
-  padding-top: 280px;
-  @include rfs(26);
-  font-style: normal;
-  color: #bff5ff;
-  h3 {
-    position: relative;
-    color: #00d3f7;
-    font-style: inherit;
-    @include rfs(28);
-    font-weight: 500;
-    line-height: 1em;
-    padding-top: 30px;
-    text-shadow: -1px 2px 10px rgba(#000, .8);
-    @keyframes logoRotate_2 {
-      0% {
-        transform: rotate(0);
-      }
-      100% {
-        transform: rotate(-360deg);
-      }
-    }
-    &::before {
-      position: absolute;
-      z-index: 0;
-      content: "";
-      bottom: 100%;
-      left: 50%;
-      margin-left: -150px;
-      width: 300px;
-      height: 180px;
-      border: 1px dashed #fff;
-      box-shadow: -15px 15px 35px 0 rgba(#000, .2);
-      background-image: url('../img/web.gif');
-      @include background();
-    }
-  }
-  p {
-    text-shadow: -1px 2px 10px rgba(#000, .8);
-    word-wrap: break-word;
-    font-style: inherit;
-    line-height: 1.5em;
-  }
 }
 
 .header {
