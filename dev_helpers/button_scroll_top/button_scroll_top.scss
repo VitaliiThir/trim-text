@@ -1,0 +1,48 @@
+/* General needs */
+@import '../../src/sass/plug/rem';
+@import '../../src/sass/plug/media-queries';
+@import '../../src/sass/plug/mixins';
+@import '../../dev_helpers/rfs/_rfs.scss';
+/*END General needs */
+
+.scroll-button {
+  position: fixed;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url('../img/button_scroll_top.svg');
+  @include background($size: 30%);
+  bottom: 50px;
+  right: 50px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid $base-color;
+  cursor: pointer;
+  background-color: #fff;
+  transition: all .4s linear;
+  transform: translateY(300%);
+  opacity: 0;
+  @include mediaToDown($sm) {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+  }
+  @include mediaOnly($sm, $md) {
+    bottom: 30px;
+    right: 30px;
+    width: 40px;
+    height: 40px;
+  }
+  &.active {
+    opacity: 0.7;
+    transform: translateY(0);
+    @include mediaToUp($lg) {
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
