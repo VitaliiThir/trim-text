@@ -3,7 +3,7 @@ $(function (){
 	let modalText = $('.m-modal-text');
 	let modalBtn = $('.m-modal-btn');
 
-	text.smallText({
+	text.trimText({
 		max: 60,
 		showHide: true
 	});
@@ -12,7 +12,7 @@ $(function (){
 		modalText.popUp();
     });
 
-    modalText.smallText({
+    modalText.trimText({
         max: 80,
         showTextOnClick: true,
         showTextOnClickClass: '.m-modal-btn',

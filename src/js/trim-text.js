@@ -1,5 +1,5 @@
 (function ($) {
-    $.fn.smallText = function (options) {
+    $.fn.trimText = function (options) {
         let settings = $.extend({
             max: 50,
             dots: true,
